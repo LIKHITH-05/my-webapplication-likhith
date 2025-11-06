@@ -1,15 +1,18 @@
-$(document).ready(function() {
-  $('#regForm').submit(function(e) {
-    let valid = true;
+$('#regForm').submit(function(e) {
+  e.preventDefault();
+  const name = $('#fullname').val();
+  const email = $('#email').val();
+  const gender = $('#gender').val();
+  const course = $('#course').val();
+  const phone = $('#phone').val();
 
-    $('input, select').each(function() {
-      if ($(this).val() === '') {
-        alert('Please fill all fields.');
-        valid = false;
-        return false;
-      }
-    });
-
-    if (!valid) e.preventDefault();
-  });
+  $('.container').html(`
+    <h2>Registration Successful 🎉</h2>
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Gender:</strong> ${gender}</p>
+    <p><strong>Course:</strong> ${course}</p>
+    <p><strong>Phone:</strong> ${phone}</p>
+  `);
 });
+
